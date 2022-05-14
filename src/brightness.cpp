@@ -40,11 +40,9 @@ BSTR brightnessClassPath = SysAllocString(L"WmiMonitorBrightness");
 BSTR brightnessVariableName = SysAllocString(L"CurrentBrightness");
 BSTR brightnessQuery = SysAllocString(L"Select * from WmiMonitorBrightness");
 
-bool init_flag = false;
 
 int Init()
 {
-    init_flag = true;
     // Initialize COM and connect up to CIMOM  
     hr = CoInitialize(0);
     if (FAILED(hr))
@@ -113,9 +111,6 @@ int GetBrightness()
 
 int SetBrightness(int brightness)
 {
-    if (!init_flag) {
-        Init();
-    }
     // ¡¡∂»∑∂Œß « [0, 100]
     brightness = min(max(brightness, 0), 100);
     // write brightness adjust params

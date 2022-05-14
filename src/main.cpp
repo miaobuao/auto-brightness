@@ -3,6 +3,7 @@
 // #define _AB_DEBUG_
 
 int main() {
+	Init();
 	long int brightness = 0, last = -1;
 	int i = 0, j = 0;
 	cv::Mat frame;
